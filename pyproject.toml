@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carla-radar4d"
+version = "0.1.0"
+description = "4D radar (range, azimuth, elevation, Doppler) sensor wrapper and radar-cube builder for CARLA"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["numpy>=1.21"]
+
+[project.optional-dependencies]
+# CARLA's Python API is often installed from the simulator's own wheel/egg;
+# install this extra only if you use the PyPI build matching your server.
+sim = ["carla"]
+detector = ["torch", "pytorch-lightning", "segmentation-models-pytorch"]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["carla_radar4d"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
